@@ -1,27 +1,25 @@
 Smart Public Service CRM (PS-CRM)
 
-An AI-powered centralized digital command center for managing citizen grievances with automated workflows, real-time tracking, and transparent resolution monitoring.
+An AI-powered centralized grievance management platform for automated workflow orchestration, real-time tracking, and transparent public service resolution.
 
-Overview
+1. Overview
 
-Smart Public Service CRM (PS-CRM) is a governance platform designed to:
+Smart Public Service CRM (PS-CRM) modernizes public grievance systems by introducing:
 
-Centralize and organize citizen complaints
+Intelligent complaint classification
 
-Automate task assignment workflows
+Automated task assignment
 
-Track grievance resolution in real time
+SLA-based escalation
 
-Enforce SLA-based escalation rules
+Real-time citizen tracking
 
-Provide transparency to citizens and administrators
+Governance-level analytics
 
-Deliver AI-driven insights for policy-level decision making
+The system functions as a centralized digital command center for public service delivery.
 
-The system transforms traditional complaint portals into an intelligent civic workflow engine.
-
-Key Features
-AI-Powered Intelligence
+2. Core Features
+2.1 AI-Driven Intelligence
 
 NLP-based complaint categorization
 
@@ -29,61 +27,61 @@ Automatic priority scoring
 
 Duplicate complaint detection
 
-Sentiment analysis
+Sentiment-based escalation
 
 Smart department routing
 
-Workflow Automation
+2.2 Workflow Automation
 
-Role-based task assignment
+Role-based access control (RBAC)
 
-SLA tracking and breach alerts
+Automated assignment engine
 
-Automated escalation engine
+SLA monitoring and escalation rules
 
-Real-time status updates
+Real-time status transitions
 
-Audit logging
+Complete audit logging
 
-Governance Analytics
+2.3 Citizen Interface
 
-Heatmaps for complaint clusters
+Complaint submission portal
 
-Department performance metrics
+Geo-tagging support
 
-Resolution time analysis
+Media upload (images/videos)
 
-Predictive backlog forecasting
-
-Citizen-Centric Interface
-
-Real-time complaint tracking
+Real-time tracking dashboard
 
 Multilingual support
 
-Geo-tagged submissions
+2.4 Administrative Dashboard
 
-Media uploads (images and videos)
+Department workload distribution
 
-Mobile-responsive interface
+Resolution time analytics
 
-System Architecture
+Complaint heatmaps
+
+Performance tracking
+
+Backlog forecasting
+
+3. System Architecture
 Citizen Portal
       ↓
 API Gateway
       ↓
 Complaint Service
       ↓
-Workflow Engine
+AI Classification Engine
       ↓
-AI Classification Service
+Workflow & Assignment Engine
       ↓
-Assignment Engine
-      ↓
-Notification System
+Notification Service
       ↓
 Analytics Dashboard
-Tech Stack
+4. Technology Stack
 Frontend
 
 Next.js / React
@@ -102,17 +100,15 @@ SQLAlchemy
 
 JWT Authentication
 
-WebSockets (real-time updates)
+WebSockets
 
 AI Services
 
-Scikit-learn / Transformers
+Scikit-learn
 
-spaCy / Hugging Face
+spaCy / Transformers
 
-Sentiment Analysis Model
-
-Priority Scoring Model
+Custom priority scoring models
 
 DevOps
 
@@ -120,11 +116,11 @@ Docker
 
 Nginx
 
-GitHub Actions (CI/CD)
+GitHub Actions
 
-AWS / Railway / Render
+AWS / Render / Railway
 
-Project Structure
+5. Project Structure
 ps-crm/
 │
 ├── backend/
@@ -145,114 +141,144 @@ ps-crm/
 ├── docker-compose.yml
 ├── requirements.txt
 └── README.md
-Complete Setup Guide
-1. Clone the Repository
+6. Installation Guide
+6.1 Clone Repository
 git clone https://github.com/your-username/ps-crm.git
 cd ps-crm
-2. Backend Setup (FastAPI)
-Create Virtual Environment
-cd backend
-python -m venv venv
-source venv/bin/activate      # Mac/Linux
-venv\Scripts\activate         # Windows
-Install Dependencies
-pip install -r requirements.txt
-Configure Environment Variables
+6.2 Backend Setup
 
-Create a .env file inside backend/:
+Navigate to backend directory:
+
+cd backend
+
+Create virtual environment:
+
+python -m venv venv
+
+Activate environment:
+
+Windows
+
+venv\Scripts\activate
+
+macOS / Linux
+
+source venv/bin/activate
+
+Install dependencies:
+
+pip install -r requirements.txt
+
+Create .env file inside backend/:
 
 DATABASE_URL=postgresql://username:password@localhost:5432/pscrm
 SECRET_KEY=your_secret_key
 ALGORITHM=HS256
 ACCESS_TOKEN_EXPIRE_MINUTES=60
-3. Database Setup (PostgreSQL)
+6.3 Database Setup
 
-Install PostgreSQL from the official website.
+Install PostgreSQL from:
 
-Create the database:
+https://www.postgresql.org/download/
+
+Create database:
 
 CREATE DATABASE pscrm;
 
 Run migrations:
 
 alembic upgrade head
-4. Run Backend Server
+6.4 Run Backend Server
 uvicorn app.main:app --reload
 
-Backend will run at:
+Backend URL:
 
 http://127.0.0.1:8000
 
-Swagger documentation:
+API Documentation:
 
 http://127.0.0.1:8000/docs
-5. Frontend Setup (Next.js)
+6.5 Frontend Setup
+
+Navigate to frontend:
+
 cd ../frontend
+
+Install dependencies:
+
 npm install
 
 Create .env.local:
 
 NEXT_PUBLIC_API_URL=http://127.0.0.1:8000
 
-Run frontend:
+Run development server:
 
 npm run dev
 
-Frontend will run at:
+Frontend URL:
 
 http://localhost:3000
-Docker Setup (Recommended)
+7. Docker Setup (Recommended)
 
-From the root directory:
+From project root:
 
 docker-compose up --build
 
-This will:
+This will start:
 
-Start backend service
+Backend container
 
-Start frontend service
+Frontend container
 
-Launch PostgreSQL container
+PostgreSQL container
 
-Default Roles
-
-Citizen
-
-Department Officer
-
-Supervisor
-
-Admin
-
-AI Model Training (Optional)
-
-Navigate to the AI module:
-
-cd backend/ai_engine
-python train_model.py
-
-This generates:
-
-priority_model.pkl
-classification_model.pkl
-Running Tests
-pytest
-Sample API Endpoints
+8. API Endpoints (Sample)
 Method	Endpoint	Description
 POST	/complaints	Create complaint
 GET	/complaints/{id}	Track complaint
 PUT	/assign	Assign complaint
-GET	/analytics	Retrieve dashboard metrics
-POST	/auth/login	User authentication
-Deployment Options
-Render
+GET	/analytics	Dashboard metrics
+POST	/auth/login	Authentication
+9. User Roles
+
+Citizen
+
+Submit complaints
+
+Track progress
+
+Department Officer
+
+View assigned tasks
+
+Update status
+
+Supervisor
+
+Monitor performance
+
+Manage escalations
+
+Administrator
+
+System configuration
+
+Analytics oversight
+
+10. Testing
+
+Run test suite:
+
+pytest
+11. Deployment Options
+Option A: Render
 
 Deploy backend as Web Service
 
 Deploy frontend as Static Site
 
-AWS
+Option B: AWS
 
 EC2 for backend
 
@@ -262,16 +288,14 @@ S3 for media storage
 
 CloudFront for CDN
 
-Roadmap
+12. Future Enhancements
 
-AI-based duplicate detection
+AI-based anomaly detection
 
-WhatsApp bot integration
+WhatsApp chatbot integration
 
-Officer performance scoring
+Predictive resolution modeling
 
-Heatmap visualization
+Public transparency portal
 
-Predictive backlog risk engine
-
-Public transparency dashboard
+Mobile application
